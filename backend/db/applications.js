@@ -41,7 +41,7 @@ const Applications = sequelize.define(
       dateOfJoining: {
          type: DataTypes.DATE,
       },
-      // statement of purpose
+      // statement of purpose - add word limit
       sop: {
          type: Sequelize.STRING,
          validate: {

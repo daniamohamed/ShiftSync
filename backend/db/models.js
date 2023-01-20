@@ -50,6 +50,7 @@ sequelize
 
 // exporting the models and sequelize connection object
 module.exports = {
+    
    User,
    JOB,
    JobApplicant,
@@ -57,4 +58,5 @@ module.exports = {
    sequelize,
    Applications,
    Rating,
+
 };

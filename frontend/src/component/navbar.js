@@ -54,6 +54,7 @@ const Navbar = () => {
       navigate(location);
    };
 
+   // navbar for recruiter and user
    return (
       <div className={classes.navbarContainer}>
          <AppBar position="static" className={classes.noBox}>

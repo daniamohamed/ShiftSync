@@ -50,6 +50,25 @@ const useStyles = makeStyles((theme) => ({
    },
 }));
 
+const calculateScores = (employee_id, all_jobs, skills_and_preferences) => {
+   const employee_skills = skills_and_preferences[employee_id];
+   const scores = {};
+ 
+   for (const job_id in all_jobs) {
+     const job_skills = skills_and_preferences[job_id];
+     const score = employee_skills.filter((skill) => job_skills.includes(skill)).length;
+     scores[job_id] = score;
+   }
+ 
+   return scores;
+ };
+ 
+ const recommendJobs = (employee_id, all_jobs, skills_and_preferences, num_recommendations) => {
+   const scores = calculateScores(employee_id, all_jobs, skills_and_preferences);
+   const sorted_jobs = Object.keys(scores).sort((a, b) => scores[b] - scores[a]);
+   return sorted_jobs.slice(0, num_recommendations);
+ };
+ 
 const JobTile = (props) => {
    const classes = useStyles();
    const { job } = props;

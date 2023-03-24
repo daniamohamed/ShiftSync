@@ -21,6 +21,359 @@ import { SetPopupContext } from "../../app";
 
 import apiList, { server } from "../../lib/api_list";
 
+const FilterPopup = (props) => {
+   const classes = useStyles();
+   const { open, handleClose, searchOptions, setSearchOptions, getData } =
+      props;
+   return (
+      <Modal open={open} onClose={handleClose} className={classes.popupDialog}>
+         <Paper>
+            <Grid container direction="column" alignItems="center" spacing={3}>
+               <Grid container item alignItems="center">
+                  <Grid item xs={3}>
+                     Sort
+                  </Grid>
+                  <Grid item container direction="row" xs={9}>
+                     <Grid
+                        item
+                        container
+                        xs={6}
+                        justifyContent="space-around"
+                        alignItems="center"
+                        style={{
+                           border: "1px solid #D1D1D1",
+                           borderRadius: "5px",
+                        }}
+                     >
+                        <Grid item>
+                           <Checkbox
+                              name="name"
+                              checked={
+                                 searchOptions.sort["Jobapplicant.name"].status
+                              }
+                              onChange={(event) =>
+                                 setSearchOptions({
+                                    ...searchOptions,
+                                    sort: {
+                                       ...searchOptions.sort,
+                                       "Jobapplicant.name": {
+                                          ...searchOptions.sort[
+                                             "Jobapplicant.name"
+                                          ],
+                                          status: event.target.checked,
+                                       },
+                                    },
+                                 })
+                              }
+                              id="name"
+                           />
+                        </Grid>
+                        <Grid item>
+                           <label for="name">
+                              <Typography>Name</Typography>
+                           </label>
+                        </Grid>
+                        <Grid item>
+                           <IconButton
+                              disabled={
+                                 !searchOptions.sort["Jobapplicant.name"].status
+                              }
+                              onClick={() => {
+                                 setSearchOptions({
+                                    ...searchOptions,
+                                    sort: {
+                                       ...searchOptions.sort,
+                                       "Jobapplicant.name": {
+                                          ...searchOptions.sort[
+                                             "Jobapplicant.name"
+                                          ],
+                                          desc: !searchOptions.sort[
+                                             "Jobapplicant.name"
+                                          ].desc,
+                                       },
+                                    },
+                                 });
+                              }}
+                           >
+                              {searchOptions.sort["Jobapplicant.name"].desc ? (
+                                 <ArrowDownwardIcon />
+                              ) : (
+                                 <ArrowUpwardIcon />
+                              )}
+                           </IconButton>
+                        </Grid>
+                     </Grid>
+                     <Grid
+                        item
+                        container
+                        xs={6}
+                        justify="space-around"
+                        alignItems="center"
+                        style={{
+                           border: "1px solid #D1D1D1",
+                           borderRadius: "5px",
+                        }}
+                     >
+                        <Grid item>
+                           <Checkbox
+                              name="jobTitle"
+                              checked={searchOptions.sort["job.title"].status}
+                              onChange={(event) =>
+                                 setSearchOptions({
+                                    ...searchOptions,
+                                    sort: {
+                                       ...searchOptions.sort,
+                                       "job.title": {
+                                          ...searchOptions.sort["job.title"],
+                                          status: event.target.checked,
+                                       },
+                                    },
+                                 })
+                              }
+                              id="jobTitle"
+                           />
+                        </Grid>
+                        <Grid item>
+                           <label for="jobTitle">
+                              <Typography>Job Title</Typography>
+                           </label>
+                        </Grid>
+                        <Grid item>
+                           <IconButton
+                              disabled={!searchOptions.sort["job.title"].status}
+                              onClick={() => {
+                                 setSearchOptions({
+                                    ...searchOptions,
+                                    sort: {
+                                       ...searchOptions.sort,
+                                       "job.title": {
+                                          ...searchOptions.sort["job.title"],
+                                          desc: !searchOptions.sort["job.title"]
+                                             .desc,
+                                       },
+                                    },
+                                 });
+                              }}
+                           >
+                              {searchOptions.sort["job.title"].desc ? (
+                                 <ArrowDownwardIcon />
+                              ) : (
+                                 <ArrowUpwardIcon />
+                              )}
+                           </IconButton>
+                        </Grid>
+                     </Grid>
+                     <Grid
+                        item
+                        container
+                        xs={6}
+                        justifyContent="space-around"
+                        alignItems="center"
+                        style={{
+                           border: "1px solid #D1D1D1",
+                           borderRadius: "5px",
+                        }}
+                     >
+                        <Grid item>
+                           <Checkbox
+                              name="dateOfJoining"
+                              checked={searchOptions.sort.dateOfJoining.status}
+                              onChange={(event) =>
+                                 setSearchOptions({
+                                    ...searchOptions,
+                                    sort: {
+                                       ...searchOptions.sort,
+                                       dateOfJoining: {
+                                          ...searchOptions.sort.dateOfJoining,
+                                          status: event.target.checked,
+                                       },
+                                    },
+                                 })
+                              }
+                              id="dateOfJoining"
+                           />
+                        </Grid>
+                        <Grid item>
+                           <label for="dateOfJoining">
+                              <Typography>Date of Joining</Typography>
+                           </label>
+                        </Grid>
+                        <Grid item>
+                           <IconButton
+                              disabled={
+                                 !searchOptions.sort.dateOfJoining.status
+                              }
+                              onClick={() => {
+                                 setSearchOptions({
+                                    ...searchOptions,
+                                    sort: {
+                                       ...searchOptions.sort,
+                                       dateOfJoining: {
+                                          ...searchOptions.sort.dateOfJoining,
+                                          desc: !searchOptions.sort
+                                             .dateOfJoining.desc,
+                                       },
+                                    },
+                                 });
+                              }}
+                           >
+                              {searchOptions.sort.dateOfJoining.desc ? (
+                                 <ArrowDownwardIcon />
+                              ) : (
+                                 <ArrowUpwardIcon />
+                              )}
+                           </IconButton>
+                        </Grid>
+                     </Grid>
+                     <Grid
+                        item
+                        container
+                        xs={6}
+                        justifyContent="space-around"
+                        alignItems="center"
+                        style={{
+                           border: "1px solid #D1D1D1",
+                           borderRadius: "5px",
+                        }}
+                     >
+                        <Grid item>
+                           <Checkbox
+                              name="rating"
+                              checked={
+                                 searchOptions.sort["Jobapplicant.rating"]
+                                    .status
+                              }
+                              onChange={(event) =>
+                                 setSearchOptions({
+                                    ...searchOptions,
+                                    sort: {
+                                       ...searchOptions.sort,
+                                       "Jobapplicant.rating": {
+                                          ...searchOptions.sort[
+                                             ["Jobapplicant.rating"]
+                                          ],
+                                          status: event.target.checked,
+                                       },
+                                    },
+                                 })
+                              }
+                              id="rating"
+                           />
+                        </Grid>
+                        <Grid item>
+                           <label for="rating">
+                              <Typography>Rating</Typography>
+                           </label>
+                        </Grid>
+                        <Grid item>
+                           <IconButton
+                              disabled={
+                                 !searchOptions.sort["Jobapplicant.rating"]
+                                    .status
+                              }
+                              onClick={() => {
+                                 setSearchOptions({
+                                    ...searchOptions,
+                                    sort: {
+                                       ...searchOptions.sort,
+                                       "Jobapplicant.rating": {
+                                          ...searchOptions.sort[
+                                             "Jobapplicant.rating"
+                                          ],
+                                          desc: !searchOptions.sort[
+                                             "Jobapplicant.rating"
+                                          ].desc,
+                                       },
+                                    },
+                                 });
+                              }}
+                           >
+                              {searchOptions.sort["Jobapplicant.rating"]
+                                 .desc ? (
+                                 <ArrowDownwardIcon />
+                              ) : (
+                                 <ArrowUpwardIcon />
+                              )}
+                           </IconButton>
+                        </Grid>
+                     </Grid>
+                  </Grid>
+               </Grid>
+
+               <Grid item>
+                  <Button
+                     variant="contained"
+                     color="primary"
+                     style={{ padding: "10px 50px" }}
+                     onClick={() => getData()}
+                  >
+                     Apply
+                  </Button>
+               </Grid>
+            </Grid>
+         </Paper>
+      </Modal>
+   );
+};
+
+const ApplicationTile = (props) => {
+   const classes = useStyles();
+   const { application, getData } = props;
+   const setPopup = useContext(SetPopupContext);
+   const [open, setOpen] = useState(false);
+   const [openEndJob, setOpenEndJob] = useState(false);
+   const [openPayment, setOpenPayment] = useState(false);
+   const [rating, setRating] = useState(application.Jobapplicant.rating);
+
+   const appliedOn = new Date(application.dateOfApplication);
+
+   const changeRating = () => {
+      axios
+         .put(
+            apiList.rating,
+            { rating: rating, applicantId: application.Jobapplicant.aid },
+            {
+               headers: {
+                  Authorization: `Bearer ${localStorage.getItem("token")}`,
+               },
+            }
+         )
+         .then((response) => {
+            setPopup({
+               open: true,
+               severity: "success",
+               message: "Rating updated successfully",
+            });
+            // fetchRating();
+            getData();
+            setOpen(false);
+         })
+         .catch((err) => {
+            // console.log(err.response);
+            console.log(err);
+            setPopup({
+               open: true,
+               severity: "error",
+               message: err.response.data.message,
+            });
+            // fetchRating();
+            getData();
+            setOpen(false);
+         });
+   };
+
+   const handleClose = () => {
+      setOpen(false);
+   };
+
+   const handleCloseEndJob = () => {
+      setOpenEndJob(false);
+   };
+
+   const handleClosePayment = () => {
+      setOpenPayment(false);
+   };
+
    const colorSet = {
       applied: "#3454D1",
       shortlisted: "#DC851F",

@@ -21,6 +21,38 @@ import { SetPopupContext } from "../../app";
 
 import apiList, { server } from "../../lib/api_list";
 
+const useStyles = makeStyles((theme) => ({
+   body: {
+      height: "inherit",
+   },
+   statusBlock: {
+      width: "100%",
+      height: "80%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      textTransform: "uppercase",
+   },
+   jobTileOuter: {
+      fontFamily: "system-ui",
+      padding: "30px",
+      margin: "20px 0",
+      boxSizing: "border-box",
+      width: "100%",
+   },
+   popupDialog: {
+      height: "100%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+   },
+   avatar: {
+      width: theme.spacing(11),
+      height: theme.spacing(11),
+      marginRight: "30px",
+   },
+}));
+
 const FilterPopup = (props) => {
    const classes = useStyles();
    const { open, handleClose, searchOptions, setSearchOptions, getData } =

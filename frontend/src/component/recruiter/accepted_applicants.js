@@ -60,7 +60,7 @@ const FilterPopup = (props) => {
    return (
       <Modal open={open} onClose={handleClose} className={classes.popupDialog}>
          <Paper>
-            <Grid container direction="column" alignItems="center" spacing={3}>
+            <Grid container direction="column" alignItems="center" spacing={4}>
                <Grid container item alignItems="center">
                   <Grid item xs={3}>
                      Sort
@@ -139,7 +139,7 @@ const FilterPopup = (props) => {
                         item
                         container
                         xs={6}
-                        justify="space-around"
+                        justifyContent="space-around"
                         alignItems="center"
                         style={{
                            border: "1px solid #D1D1D1",
@@ -381,14 +381,12 @@ const ApplicationTile = (props) => {
             setOpen(false);
          })
          .catch((err) => {
-            // console.log(err.response);
             console.log(err);
             setPopup({
                open: true,
                severity: "error",
                message: err.response.data.message,
             });
-            // fetchRating();
             getData();
             setOpen(false);
          });

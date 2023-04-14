@@ -3,7 +3,7 @@
 const express = require("express"); // web framework for Node.js
 const { Pool } = require('pg'); // PostgreSQL client for Node.js
 const bodyParser = require("body-parser"); // middleware to parse incoming request bodies
-const passportConfig = require("./lib/passportConfig"); // configuration for Passport authentication library
+const passportConfig = require("./lib/config"); // configuration for Passport authentication library
 const cors = require("cors"); // middleware to enable Cross-Origin Resource Sharing
 const fs = require("fs"); // file system module for Node.js
 
@@ -46,10 +46,8 @@ app.use(cors());
 app.use(passportConfig.initialize());
 
 // define routing for various routes
-app.use("/auth", require("./routes/authRoutes"));
-app.use("/api", require("./routes/apiRoutes"));
-app.use("/upload", require("./routes/uploadRoutes"));
-app.use("/host", require("./routes/downloadRoutes"));
+app.use("/auth", require("./routes/auth_routes"));
+app.use("/api", require("./routes/api_routes"));
 
 // start the server and listen for incoming requests on the specified port
 app.listen(port, () => {

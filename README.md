@@ -26,20 +26,4 @@ Email address: employer@live.com
 
 Password: employer@thisistest101
 
-## Features of Application
-
-## Technology Used
-- PERN Stack - Postgres, Express, React, and Node.
-- Postgres is a database management system that stores application data.
-- Express is the backendframework that handles requests and responses.
-- React is used to build the user interface of the application.
-- Node executes server-side code.
-
-## Why PERN Stack?
-
-1. It allows for efficient and seamless data management.
-2. It enables the creation of responsive and user-friendly interfaces.
-3. It supports real-time updates and interactive features.
-4. It offers a wide range of tools and libraries for web development.
-5. It allows for easy deployment and scaling of the application.
 

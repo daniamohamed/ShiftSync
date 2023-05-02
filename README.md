@@ -1,7 +1,7 @@
 # ShiftSync
 
 ## Project Overview
-ShiftSync is a mobile web app that connects students with part-time employment opportunities and employers with easy-to-use budget management. With access to over 100 available jobs, ShiftSync makes job hunting and management convenient for all.
+ShiftSync is a mobile web app that connects students with part-time employment opportunities and introduces businesses to shift-based employment 
 
 ## Steps to run the application
 ### Backend
